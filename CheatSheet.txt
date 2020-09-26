@@ -1,0 +1,240 @@
+
+basic linux commands
+
+Shell is basically the interface for the user to interact with computers. It exists from the beginning. Infact the GUI(Graphical User Interface) was developed later. Shell is interface where user gets to pass the input in form of text on terminal.
+
+. -> points to current directory
+.. -> points to parent directory
+
+To list the files - ls
+ls / -> to list the files in the root directory
+ls ~ -> to list the files in the home directory
+ls *absolute path of any directory(starts with /)* -> list the files in that directory
+ls *relative path from the current directory(doesn’t starts with /)* -> lists the files in that directory
+ls .. -> to list files in one step back directory
+ls ../.. -> to list files in two step back directory
+ls -l -> to list files in long format
+ls -a -> to list all files with the hidden files
+ls -lt -> list in long format and order them in most recently modified.
+ls -lS -> list the files in long format and order them with size
+ls -R -> to Recursively list subdirectories encountered
+ls -lSa -> list all files with hidden files in order of size (things can be combined to have a result out of them)
+ls  *.html -> to list all files of html format
+ls abc.* -> to list all files with name abc with any format
+ls *.* -> to list all files of all format but no directories
+ls -d */  ->  list all the directories instead of content
+ls  */  ->  list all the directories with their content
+ls -l *filename* -> long listing of the file with filename
+ls -ld *dir_name* -> long listing of directory dir_name
+
+To change the directory- cd
+cd / -> to change directory to root directory
+cd ~  -> to change directory to home directory
+cd  *absolute path of any directory(starts with /)* -> to change directory to that directory
+cd  *relative path from the current directory(doesn’t starts with /)* -> to change directory to that directory
+cd .. -> to change directory to one folder up
+cd ../.. -> to change directory to two folder up
+cd xyz\ abc -> for a folder(named xyz abc) with space in its name
+cd “xyz abc” -> for a folder(named xyz abc) with space in its name
+cd ‘xyz abc’ -> for a folder(named xyz abc) with space in its name
+cd *relative_path* && ls -> can be combined this way
+ 
+The cat command- cat option file1 file2
+cat -> we can type anything to get it echo back whatever input we gave
+cat file.txt -> displays the content of file
+cat file1.txt cat file2.txt  -> combines and displays the content of both files 
+cat -b file1.txt -> adds the line number to the non blank lines and display the file1.txt
+cat -n file1.txt ->  adds the line number to all the lines and display the file1.txt
+cat  -s file1.txt -> squeezes the extra blank lines in between to one and display the content of file
+cat -e file1.txt -> adds dollar symbol to end of each line and displays the content to show end of line
+
+*any command* > out.txt -> prints the output of the *any command* with this symbol > pointing to direction of stream which is out.txt (if out.txt is not there it will create it automatically)
+
+Redirection- output > file
+cat > file.txt -> to save the input stream in file.txt (if file.txt already exists it will be overridden)
+cat >> file.txt -> to append the input stream to file.txt
+cat file1.txt cat file2.txt >file3.txt -> combines the display of file1 and file2 and add it to file3
+
+To make a directory - mkdir
+mkdir *dir_name* -> makes a directory with name dir_name
+mkdir -p *dir_name*/*sub_dir_name* -> to make a directory inside a non-existing directory
+mkdir -p *dir_name*/{*sub_dir1*,*sub_dir2*,*sub_dir3*} -> makes directory dir_name and creates 3 directories in it
+
+To remove files and directories-> rm and rmdir
+rmdir *dir_name* -> to remove the empty directory 
+rm *relative_path_of_directory* -> remove the directory if it is empty 
+rm -r *dir_name* -> removes directory irrespective of it is empty.
+rm -vr *dir_name* -> v for verbose, it expands the step how the command is deleting the files
+
+To copy files and directories- cp
+cp *file1* *file2* -> copy the file1 to file2, if file2 is not existing it will also create file2
+cp *file1* *relative_path/absolute_path*/*file2* -> copy the file1 into directory of path mentioned with name file2
+cp *file1* *file2*  *relative_path/absolute_path* -> copy the file 1 and file 2 into directory
+cp file_name.* *relative_path/absolute_path* -> copy all file with file_name into directory 
+cp -i *file_name* *relative_path/absolute_path* -> gives interactive copy, if the file is already existing, it would ask before overriding 
+cp ../*file_name* . -> copies file_name from one step up into current directory
+cp -r *dir1* *dir2* -> copies the content of directory1 into directory2 
+cp -pr *dir1* *dir2* -> copies the directory1 into directory2 
+cp -a *dir1* *dir2* -> copies the directory1 into directory2
+
+To move files and directories- mv
+mv *file1* *file2*  -> renames the file1 name with file2
+mv *file1_location* . -> move file 1 to current location
+ma *file1* *relative_path/absolute_path* -> moves the file1 to directory mentioned
+mv -i  *file1* *relative_path/absolute_path*-> gives interactive move, if the file is already existing, it would ask before overriding 
+mv *dir1* *dir2* -> move directory1 with its content to directory2
+mv * *location_from_current_path or absolute_path_of_directory* -> move all file at this location to that directory
+
+The less command
+less *file_name* -> shows the content of the file from beginning (makes sense in case of a large file) - 
+space -> page down , b -> page up, shift+g-> bottom of file, 1+g-> top of file
+
+The touch command
+touch *file_name* -> creates the file with file_name
+touch *file_name* -> if the file already exists its time stamp will change to current time.
+
+The nano command - nano is text editor with good features
+nano *file_name* -> to create the file with file_name and edit it
+and there are other features in the editor
+ 
+The top command-
+top -> to display the current running processes
+press s and then the integer value for seconds to change the refresh rate
+press i to filter out idle processes (doesn’t works on mac)
+
+The kill command-
+kill pid -> kill process with id-pid
+kill -KILL pid -> force the program to close with id-pid
+kill -9 pid -> non-ignorable kill just like -KILL flag
+
+The echo command-
+echo “some_textc -> prints some_text back
+name=“some text” -> stores String -some text,  in variable name for this session
+echo -e “some \text” -> flag e here will interpret \t as tab space
+echo -e “some \ntext” -> \n will be interpreted as new line 
+
+permissions -
+ls -l -> lists file in long format
+first character is for type of file( -(dash) -> regular file, d->directory, c->character special file, b->binary special file)
+next 3 elements represents right for user
+next 3 elements represents right for group
+next 3 elements represents right for others(everybody else)
+next character represent symbolic links of the file
+next word represents the user of the file
+next word represents the group of the file
+next word represents the number of bytes in the file
+next we have date and time, when file was modified last
+lastly we have the file name
+r stands for readable, w stands for writable, x stands for executable
+
+changing permission for the file
+chmod o+x *filename* -> to add executable permission for others
+chmod g-wx *filename* -> to remove write and executable permission for group
+chmod ug=rwx *filename* -> to add read write execute to user and group
+chmod ug-w  *filename* -> to remove write permission from both user and group
+chmod a-x *filename* -> to remove executable permission from all
+chmod u=rwx,g+rx,o=r -> to add read write executable permission to user, read executable permission to group, read permission to others
+
+changing permission for the directory
+taking away read permission from the user doesnt lets you read the file, though you can cd onto the directory but can’t see the content
+taking away writable permission takes away the right of creating a file from user
+taking away executable permissions doesnt lets you to access the file and you cant even get into the folder
+
+
+octal permissions
+r w x
+4 2 1
+chmod 751 *filename* -> gives permissions 7-rwx to user, 5- r-x to group, —x to others
+
+
+which *command name* -> gives the location the name of the command (own should use the full location of the command in the bash shell scripts)
+whatis *command name* -> gives a short description of the command from man page
+
+
+df -> reports File system Disk space usage
+df -h -> flag h stand for human readable
+du -> disk space used by the directory you are in
+du -h -> flag h stand for human readable version of du
+du -sh -> displays summary it in 1 line in human readable version 
+(not in-build for mac)
+free -h -> displays free and used memory
+free -g -> to displays free and used memory in giga byte
+
+
+(not in-build for mac)
+watch command -> to run a command periodically
+watch date -> the date commands execute every 2 second(default value)
+watch -n 1 date ->-n flag is for specifying intervals in seconds , here date command will execute every 1 second
+
+
+head and tail command
+head  *filename* -> displays first 10 line(by default) of the file filename
+head -n4 *filename* -> displays first 4 line of the file filename (you can even skip adding n to the flag)
+head  -f   *filename* ->  flag f for follow, it keeps appending the output if any change happens and control do not reach out
+tail  *filename* -> displays last 10 line(by default) of the file filename
+tail *filename1* *filename2* -> displays last 10 line of filename1 and filename2 
+
+
+find command
+find *location/directory path* -name abc.c -> finds for the path of file named abc.c in specified location
+find *location/directory path* -name abc.* -> finds for the path of files named abc with any extension in specified location
+find *location/directory path* -name *.c -> finds for the path of all files with extension .c in specified location
+find *location/directory path* -name abc* -> finds for the path of file and directories with name abc in specified location
+find *location/directory path* -mtime -2 -> finds for the path of all files modified/created in last 2 days in specified location
+
+
+wc command- word count
+wc *filename* -> prints number of line, number of words and number of characters with filename
+wc -c *filename* -> prints number of characters with filename
+wc -l *filename* -> prints number of line with filename
+wc -w *filename* -> prints number of words with filename
+wc -L *filename* -> prints length of the longest line
+
+
+cal command- conventionally formatted calendar
+cal -> to see the calendar output on terminal
+ncal -> to see the calendar with weekdays in rows 
+cal 2018 -> show the calendar of the year 2018
+cal 2 2018 ->  show the calendar of the feb month of 2018
+cal -3 -> shows the calendar of previous, current and next month
+
+
+date command
+date -> to display date, day, time with timezone
+date -s “11/20/2019 12:40:00” -> sets the time of the system to the string value next -s flag
+date +%y -> displays the year
+date +%y-%m-%d -> displays year-month-date
+date “+DATE %y-+%m-+%d %n Time: %H:%M”-> displays the string with the variables value
+
+
+Running multiple commands
+
+
+
+
+pwd -> current working directory
+clear -> clears the terminal
+sudo -> for the super user rights
+sudo -s -> terminal turns into superuser mode for this
+apt-get install *software_link* -> to install the software you want to install
+open -a *appname* -> to open any app on mac terminal 
+chmod +x *file name* -> to give read write and execute permission to user
+ vim 
+nano - its an editor
+gedit -> graphical user interface editor (not available in mac by default)
+
+
+cat /etc/shells -> to display the shells available 
+/bin/bash -> to change the shell to bash
+/bin/zsh -> to change the shell to zsh
+echo $SHELL -> to display the default shell
+echo $0 - to display the current shell being used
+
+
+
+ssh-keygen -> to generate the public and provate key
+ssh -i MyAWSkey.pem ec2-user@“ip” -> to login into aws instance using the the MyAWSkey.pem key
+ssh pi@“ip” -> login into the pi with local ip “ip”
+scp *filename/path* *pi@111.1.1.1*:*location in remote machine* -> copies file filename from local system to remote system in the location specified after : , even if you want it in home directory : is required after the ip address
+ssh-keygen -> to generate keys . This generate 2 key in your .ssh directory id_rsa (private) and id_rsa.pub (public).  You add/append public key to the remote machine in .ssh/authorized_keys . This will let you login into this remote machine without password.
+
