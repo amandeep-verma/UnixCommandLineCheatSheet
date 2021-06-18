@@ -232,7 +232,7 @@ echo $0 - to display the current shell being used
 
 
 
-ssh-keygen -> to generate the public and provate key
+ssh-keygen -> to generate the public and private key
 ssh -i MyAWSkey.pem ec2-user@“ip” -> to login into aws instance using the the MyAWSkey.pem key
 ssh pi@“ip” -> login into the pi with local ip “ip”
 scp *filename/path* *pi@111.1.1.1*:*location in remote machine* -> copies file filename from local system to remote system in the location specified after : , even if you want it in home directory : is required after the ip address
