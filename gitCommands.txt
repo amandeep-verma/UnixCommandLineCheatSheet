@@ -1,0 +1,153 @@
+#Frequently used git commands
+
+# to clone the repo in present directory
+git clone *the link of the repo*
+
+git status
+
+#to stage a file to commit
+git add *file name* 
+
+#to stage all the file to commit
+git add .
+
+#to commit add your message
+git commit -m “*message*”
+git commit -m “*message*” -m “*discription*”
+
+#to push changes
+git push
+
+#to push changes to a specific branch
+git push -origin *BranchName*
+
+
+---------------------------------------------------------------------------------------------------------------------------
+extra feature
+
+#check the logs 
+git log
+
+#to reset the changes made
+git reset
+git reset HEAD~1
+
+#you can find a previous commit using (git log) 
+#reset the codes to commit hashnumber with changes as unstaged
+git reset *commit hashnumber*
+
+#reset the codes to commit hashnumber
+git reset —hard *commit hashnumber*
+
+---------------------------------------------------------------------------------------------------------------------------
+
+#to check on remotes- 
+git remote -v
+
+# (Remotes are simply reference to the repos that are not on your computer) 
+#when you ll perform the command above -> you ll see a remote called “origin”, which links to your repo. 
+#This reference is automatically created during cloning process. If you don’t have an origin remote than you can add it by using the following command->
+git remote add origin *the link of the repo*
+
+---------------------------------------------------------------------------------------------------------------------------
+#How to make a local folder into git repository and upload it to github
+
+#to make a local folder as git
+git init
+
+#Go to github and make a new repo with the same name as of folder
+
+#run this in terminal
+git remote add origin *the link for the repo you created in last step*
+
+#to see the status of the repo it is linked to
+git remote -v
+
+#to push the code to git and set default branch for future push -  
+git push --set-upstream origin master
+
+---------------------------------------------------------------------------------------------------------------------------
+Some extra commands
+
+#deleting a directory 
+rm -rf *directory*
+
+#touch command to create file- 
+touch *file name*
+
+#to remove the git  - 
+rm -rf git *Directory Name*
+
+---------------------------------------------------------------------------------------------------------------------------
+Branching
+
+#to check the present brach
+git branch 
+
+#to make a new branch
+git checkout -b *branchName*
+
+#to switch between branches
+git checkout *branchName*
+
+#to switch between branches and ignoring the changes made in current branch
+git checkout -f *branchName*
+
+#to see the difference in the code in branches
+git diff  *branchName*
+
+#(instead of merging here locally you can push the code and merge it on GitHub, the preferred way)
+#to merge the branches locally
+git merge *branchName*
+
+#to push
+git push --set-upstream origin *branchName*
+
+# -u is short hand for —set-upstream
+git push -u origin *branchName*
+
+#to pull the changes made to the branch on the browser or after merging
+git pull
+
+(
+#if upstream is not set  by default you have to set it using - 
+git pull -u origin *branchName* 
+)
+
+
+#to delete a branch
+git branch -d *branchName* 
+
+#(can only be used when you have modified a already existing file, not when you have created a new file)
+#to add and commit together - 
+git commit -am “*the message to be saved with git*”
+
+---------------------------------------------------------------------------------------------------------------------------
+Git Config check commands
+
+#to check the git version
+git --version
+
+#to get the name
+git config user.name
+
+#to get the email
+git config user.email
+
+---------------------------------------------------------------------------------------------------------------------------
+#to ignore .DS_Store globally
+
+# create .gitignore_global in home directory
+touch ~/.gitignore_global 
+
+# add to the git config
+git config --global core.excludesfile ~/.gitignore_global
+
+# Open the ~/.gitignore_global and add the name of the files seperated by new line to ignore globally 
+---------------------------------------------------------------------------------------------------------------------------
+
+#to see the current sha of the branch - 
+git rev-parse *branchName*
+
+##Forking - You do forks for other people’s repo.
+---------------------------------------------------------------------------------------------------------------------------
